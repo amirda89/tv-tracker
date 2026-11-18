@@ -31,9 +31,9 @@ export default function MediaCard({
     );
   }
 
-  const ep = item.curEp || 0;
-  const total = item.totalEp || 10;
-  const pct = Math.min(100, Math.round((ep / total) * 100));
+  const ep = item.cur_ep || 0;
+  const total = item.total_ep || 10;
+  const pct = total > 0 ? Math.min(100, Math.round((ep / total) * 100)) : 0;
 
   return (
     <div className="group relative flex flex-col justify-between bg-[#181818] border border-white/5 hover:border-white/15 rounded-xl p-4 shadow-sm hover:shadow-xl transition-all duration-200">
@@ -69,7 +69,7 @@ export default function MediaCard({
           <div className="space-y-2 pt-2 border-t border-white/5">
             <div className="flex items-center justify-between text-xs text-tertiary">
               <span className="font-medium text-white">
-                S{item.curSeason || 1}:E{ep} / {total}
+                S{item.cur_season || 1}:E{ep} / {total}
               </span>
               <span>{pct}%</span>
             </div>
@@ -82,16 +82,23 @@ export default function MediaCard({
               />
             </div>
             <div className="flex items-center justify-between pt-1">
-              <button
-                onClick={() => onQuickIncrement(item.id)}
-                className="flex items-center gap-1 px-2.5 py-1 rounded bg-white/5 hover:bg-primary-container hover:text-white text-zinc-300 font-label-sm uppercase tracking-wider transition-all"
-                type="button"
-              >
-                <span className="material-symbols-outlined text-[13px]">
-                  add
-                </span>{" "}
-                +1 Ep
-              </button>
+              {item.status === "Completed" ? (
+                <span className="text-[11px] text-emerald-400 font-semibold uppercase tracking-wider">
+                  All Seasons Done
+                </span>
+              ) : (
+                <button
+                  onClick={() => onQuickIncrement(item.id)}
+                  className="flex items-center gap-1 px-2.5 py-1 rounded bg-white/5 hover:bg-primary-container hover:text-white text-zinc-300 font-label-sm uppercase tracking-wider transition-all"
+                  type="button"
+                >
+                  <span className="material-symbols-outlined text-[13px]">
+                    add
+                  </span>{" "}
+                  +1 Ep
+                </button>
+              )}
+
               <div className="flex items-center gap-1 text-tertiary">
                 <button
                   onClick={() => onEdit(item)}

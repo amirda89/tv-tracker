@@ -13,10 +13,13 @@ import { useMediaLibrary } from "@/hooks/useMediaLibrary";
 export default function HomePage() {
   const {
     library,
+    loading,
     metrics,
     filteredItems,
     pageItems,
     featuredItem,
+    jumpBackInItems, // Hook-оос авч байна
+    setFeaturedSpotlight, // Hook-оос авч байна
     currentFilter,
     setCurrentFilter,
     searchQuery,
@@ -42,6 +45,14 @@ export default function HomePage() {
     resetFilters,
   } = useMediaLibrary();
 
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-[#111111] flex items-center justify-center text-zinc-400">
+        Loading CineTrack library...
+      </div>
+    );
+  }
+
   return (
     <>
       <Header
@@ -60,9 +71,11 @@ export default function HomePage() {
 
           <MetricsRow metrics={metrics} />
 
+          {/* Динамикаар ирж байгаа active watching жагсаалт болон spotlight тохируулах функцыг дамжуулж байна */}
           <JumpBackInCarousel
-            library={library}
+            items={jumpBackInItems}
             onQuickIncrement={quickIncrement}
+            onSelectSpotlight={setFeaturedSpotlight}
           />
 
           <FilterBar
