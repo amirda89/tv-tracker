@@ -2,9 +2,6 @@
 
 import { useState, useEffect } from "react";
 
-const DEFAULT_POSTER_INPUT =
-  "https://image.tmdb.org/t/p/w600_and_h900_bestv2/7iiTTgloJzvGI1TAYymCfbfl3vT.jpg";
-
 export default function MediaModal({ isOpen, editingItem, onClose, onSave }) {
   const [title, setTitle] = useState("");
   const [type, setType] = useState("Movie");
@@ -13,7 +10,6 @@ export default function MediaModal({ isOpen, editingItem, onClose, onSave }) {
   const [year, setYear] = useState(2024);
   const [rating, setRating] = useState(8.5);
   const [runtime, setRuntime] = useState("2h 12m");
-  const [image, setImage] = useState(DEFAULT_POSTER_INPUT);
   const [curSeason, setCurSeason] = useState(1);
   const [curEp, setCurEp] = useState(1);
   const [totalSeasons, setTotalSeasons] = useState(1);
@@ -28,7 +24,6 @@ export default function MediaModal({ isOpen, editingItem, onClose, onSave }) {
       setYear(editingItem.year || 2024);
       setRating(editingItem.rating || 8.5);
       setRuntime(editingItem.runtime || "");
-      setImage(editingItem.image || DEFAULT_POSTER_INPUT);
       setCurSeason(editingItem.curSeason || 1);
       setCurEp(editingItem.curEp || 0);
       setTotalSeasons(editingItem.totalSeasons || 1);
@@ -41,7 +36,6 @@ export default function MediaModal({ isOpen, editingItem, onClose, onSave }) {
       setYear(2024);
       setRating(8.5);
       setRuntime("2h 12m");
-      setImage(DEFAULT_POSTER_INPUT);
       setCurSeason(1);
       setCurEp(1);
       setTotalSeasons(1);
@@ -62,7 +56,6 @@ export default function MediaModal({ isOpen, editingItem, onClose, onSave }) {
       year: Number(year) || 2024,
       rating: Number(rating) || 8.0,
       runtime: runtime.trim(),
-      image: image.trim(),
       ...(type === "Series"
         ? {
             curSeason: Number(curSeason) || 1,
@@ -78,20 +71,20 @@ export default function MediaModal({ isOpen, editingItem, onClose, onSave }) {
   return (
     <div
       onClick={(e) => e.target === e.currentTarget && onClose()}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md transition-opacity duration-200"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md transition-opacity duration-200"
     >
-      <div className="bg-surface-container w-full max-w-lg rounded-xl shadow-[0_24px_50px_rgba(0,0,0,0.9)] overflow-hidden max-h-[942px] flex flex-col">
+      <div className="bg-[#181818] border border-white/10 w-full max-w-lg rounded-xl shadow-[0_24px_50px_rgba(0,0,0,0.9)] overflow-hidden flex flex-col">
         {/* Modal Header */}
-        <div className="px-space-md py-space-sm bg-surface-container-high flex items-center justify-between">
+        <div className="px-space-md py-3.5 bg-white/[0.03] border-b border-white/5 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-2 h-4 rounded-full bg-primary-container" />
-            <h3 className="font-headline-sm text-headline-sm text-white">
+            <div className="w-1.5 h-4 rounded-full bg-primary-container" />
+            <h3 className="font-headline-sm text-title-md text-white font-bold">
               {editingItem ? "Edit Tracked Title" : "Add Title to Library"}
             </h3>
           </div>
           <button
             onClick={onClose}
-            className="w-8 h-8 rounded-full hover:bg-surface-bright flex items-center justify-center text-tertiary hover:text-white transition-colors"
+            className="w-8 h-8 rounded-full hover:bg-white/10 flex items-center justify-center text-tertiary hover:text-white transition-colors"
             type="button"
           >
             <span className="material-symbols-outlined text-[20px]">close</span>
@@ -105,7 +98,7 @@ export default function MediaModal({ isOpen, editingItem, onClose, onSave }) {
         >
           <div className="space-y-space-xs">
             <label className="block text-tertiary font-label-sm text-label-sm uppercase tracking-wider">
-              Media Title
+              Title
             </label>
             <input
               autoFocus
@@ -113,8 +106,8 @@ export default function MediaModal({ isOpen, editingItem, onClose, onSave }) {
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              placeholder="e.g. Blade Runner 2049, Dune: Part Two"
-              className="w-full px-3 py-2 rounded-lg bg-surface-container-low text-white placeholder:text-tertiary font-body-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary-container"
+              placeholder="e.g. Severance, Dune: Part Two"
+              className="w-full px-3 py-2 rounded-lg bg-[#111111] border border-white/10 text-white placeholder:text-tertiary/70 font-body-md text-body-md focus:outline-none focus:border-primary-container"
             />
           </div>
 
@@ -123,7 +116,7 @@ export default function MediaModal({ isOpen, editingItem, onClose, onSave }) {
               <label className="block text-tertiary font-label-sm text-label-sm uppercase tracking-wider">
                 Type
               </label>
-              <div className="flex rounded-lg bg-surface-container-low p-1">
+              <div className="flex rounded-lg bg-[#111111] border border-white/10 p-1">
                 <button
                   type="button"
                   onClick={() => setType("Movie")}
@@ -156,7 +149,7 @@ export default function MediaModal({ isOpen, editingItem, onClose, onSave }) {
               <select
                 value={status}
                 onChange={(e) => setStatus(e.target.value)}
-                className="w-full px-3 py-2 rounded-lg bg-surface-container-low text-white font-body-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary-container"
+                className="w-full px-3 py-2 rounded-lg bg-[#111111] border border-white/10 text-white font-body-md text-body-md focus:outline-none focus:border-primary-container"
               >
                 <option value="Watching">Watching</option>
                 <option value="Completed">Completed</option>
@@ -165,11 +158,10 @@ export default function MediaModal({ isOpen, editingItem, onClose, onSave }) {
             </div>
           </div>
 
-          {/* Series-Specific Fields */}
           {type === "Series" && (
-            <div className="p-space-sm rounded-lg bg-surface-container-low space-y-space-xs">
-              <span className="block text-secondary font-label-sm text-label-sm uppercase tracking-wider">
-                Series Episode Telemetry
+            <div className="p-space-sm rounded-lg bg-[#111111] border border-white/5 space-y-space-xs">
+              <span className="block text-cyan-400 font-label-sm text-label-sm uppercase tracking-wider">
+                Series Episode Tracker
               </span>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                 <div>
@@ -181,7 +173,7 @@ export default function MediaModal({ isOpen, editingItem, onClose, onSave }) {
                     min="1"
                     value={curSeason}
                     onChange={(e) => setCurSeason(e.target.value)}
-                    className="w-full px-2 py-1.5 rounded bg-surface-container text-white text-center font-body-md text-body-md"
+                    className="w-full px-2 py-1.5 rounded bg-surface-container border border-white/5 text-white text-center font-body-md text-body-md"
                   />
                 </div>
                 <div>
@@ -193,7 +185,7 @@ export default function MediaModal({ isOpen, editingItem, onClose, onSave }) {
                     min="0"
                     value={curEp}
                     onChange={(e) => setCurEp(e.target.value)}
-                    className="w-full px-2 py-1.5 rounded bg-surface-container text-white text-center font-body-md text-body-md"
+                    className="w-full px-2 py-1.5 rounded bg-surface-container border border-white/5 text-white text-center font-body-md text-body-md"
                   />
                 </div>
                 <div>
@@ -205,7 +197,7 @@ export default function MediaModal({ isOpen, editingItem, onClose, onSave }) {
                     min="1"
                     value={totalSeasons}
                     onChange={(e) => setTotalSeasons(e.target.value)}
-                    className="w-full px-2 py-1.5 rounded bg-surface-container text-white text-center font-body-md text-body-md"
+                    className="w-full px-2 py-1.5 rounded bg-surface-container border border-white/5 text-white text-center font-body-md text-body-md"
                   />
                 </div>
                 <div>
@@ -217,14 +209,13 @@ export default function MediaModal({ isOpen, editingItem, onClose, onSave }) {
                     min="1"
                     value={totalEp}
                     onChange={(e) => setTotalEp(e.target.value)}
-                    className="w-full px-2 py-1.5 rounded bg-surface-container text-white text-center font-body-md text-body-md"
+                    className="w-full px-2 py-1.5 rounded bg-surface-container border border-white/5 text-white text-center font-body-md text-body-md"
                   />
                 </div>
               </div>
             </div>
           )}
 
-          {/* Genre & Release Year */}
           <div className="grid grid-cols-2 gap-space-sm">
             <div className="space-y-space-xs">
               <label className="block text-tertiary font-label-sm text-label-sm uppercase tracking-wider">
@@ -233,7 +224,7 @@ export default function MediaModal({ isOpen, editingItem, onClose, onSave }) {
               <select
                 value={genre}
                 onChange={(e) => setGenre(e.target.value)}
-                className="w-full px-3 py-2 rounded-lg bg-surface-container-low text-white font-body-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary-container"
+                className="w-full px-3 py-2 rounded-lg bg-[#111111] border border-white/10 text-white font-body-md text-body-md focus:outline-none focus:border-primary-container"
               >
                 <option value="Sci-Fi">Sci-Fi</option>
                 <option value="Anime">Anime</option>
@@ -253,12 +244,11 @@ export default function MediaModal({ isOpen, editingItem, onClose, onSave }) {
                 max="2030"
                 value={year}
                 onChange={(e) => setYear(e.target.value)}
-                className="w-full px-3 py-2 rounded-lg bg-surface-container-low text-white font-body-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary-container"
+                className="w-full px-3 py-2 rounded-lg bg-[#111111] border border-white/10 text-white font-body-md text-body-md focus:outline-none focus:border-primary-container"
               />
             </div>
           </div>
 
-          {/* Rating & Runtime */}
           <div className="grid grid-cols-2 gap-space-sm">
             <div className="space-y-space-xs">
               <label className="block text-tertiary font-label-sm text-label-sm uppercase tracking-wider">
@@ -273,7 +263,7 @@ export default function MediaModal({ isOpen, editingItem, onClose, onSave }) {
                   step="0.1"
                   value={rating}
                   onChange={(e) => setRating(e.target.value)}
-                  className="w-full px-3 py-2 rounded-lg bg-surface-container-low text-white font-body-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary-container"
+                  className="w-full px-3 py-2 rounded-lg bg-[#111111] border border-white/10 text-white font-body-md text-body-md focus:outline-none focus:border-primary-container"
                 />
               </div>
             </div>
@@ -286,25 +276,11 @@ export default function MediaModal({ isOpen, editingItem, onClose, onSave }) {
                 value={runtime}
                 onChange={(e) => setRuntime(e.target.value)}
                 placeholder="2h 18m"
-                className="w-full px-3 py-2 rounded-lg bg-surface-container-low text-white font-body-md text-body-md focus:outline-none focus:ring-1 focus:ring-primary-container"
+                className="w-full px-3 py-2 rounded-lg bg-[#111111] border border-white/10 text-white font-body-md text-body-md focus:outline-none focus:border-primary-container"
               />
             </div>
           </div>
 
-          {/* Poster URL */}
-          <div className="space-y-space-xs">
-            <label className="block text-tertiary font-label-sm text-label-sm uppercase tracking-wider">
-              Poster Image URL (or Keywords)
-            </label>
-            <input
-              type="text"
-              value={image}
-              onChange={(e) => setImage(e.target.value)}
-              className="w-full px-3 py-2 rounded-lg bg-surface-container-low text-white placeholder:text-tertiary font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary-container"
-            />
-          </div>
-
-          {/* Buttons */}
           <div className="pt-space-sm flex items-center justify-end gap-space-sm">
             <button
               type="button"

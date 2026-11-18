@@ -8,8 +8,6 @@ export const initialMedia = [
     rating: 8.8,
     status: "Completed",
     runtime: "2h 46m",
-    image:
-      "https://image.tmdb.org/t/p/w600_and_h900_bestv2/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg",
   },
   {
     id: 2,
@@ -24,8 +22,6 @@ export const initialMedia = [
     totalSeasons: 2,
     totalEp: 9,
     runtime: "45m",
-    image:
-      "https://image.tmdb.org/t/p/w600_and_h900_bestv2/fqldf2t8ztc9aiwn3k6mlX3tvRT.jpg",
   },
   {
     id: 3,
@@ -36,8 +32,6 @@ export const initialMedia = [
     rating: 8.9,
     status: "Completed",
     runtime: "3h 00m",
-    image:
-      "https://image.tmdb.org/t/p/w600_and_h900_bestv2/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
   },
   {
     id: 4,
@@ -52,8 +46,6 @@ export const initialMedia = [
     totalSeasons: 4,
     totalEp: 9,
     runtime: "1h 15m",
-    image:
-      "https://image.tmdb.org/t/p/w600_and_h900_bestv2/49WJfeN0moxb9IPfGn8AIqMGskD.jpg",
   },
   {
     id: 5,
@@ -68,8 +60,6 @@ export const initialMedia = [
     totalSeasons: 2,
     totalEp: 23,
     runtime: "24m",
-    image:
-      "https://image.tmdb.org/t/p/w600_and_h900_bestv2/hFWP5HkbVEe40hrXgtCeKpRFHG0.jpg",
   },
   {
     id: 6,
@@ -84,8 +74,6 @@ export const initialMedia = [
     totalSeasons: 3,
     totalEp: 10,
     runtime: "32m",
-    image:
-      "https://image.tmdb.org/t/p/w600_and_h900_bestv2/sH0oA0e38m69a6v75H7jUvS49iT.jpg",
   },
   {
     id: 7,
@@ -100,8 +88,6 @@ export const initialMedia = [
     totalSeasons: 2,
     totalEp: 9,
     runtime: "52m",
-    image:
-      "https://image.tmdb.org/t/p/w600_and_h900_bestv2/9epGgd9q4cA7llfRzG324yYn32.jpg",
   },
   {
     id: 8,
@@ -112,8 +98,6 @@ export const initialMedia = [
     rating: 8.7,
     status: "Completed",
     runtime: "2h 44m",
-    image:
-      "https://image.tmdb.org/t/p/w600_and_h900_bestv2/gajva2L0rPYkEWjzgFlBXCAVBE5.jpg",
   },
   {
     id: 9,
@@ -124,8 +108,6 @@ export const initialMedia = [
     rating: 7.8,
     status: "Completed",
     runtime: "2h 11m",
-    image:
-      "https://image.tmdb.org/t/p/w600_and_h900_bestv2/H6vke7zGiuL74v03eG94Z0wIf.jpg",
   },
   {
     id: 10,
@@ -136,8 +118,6 @@ export const initialMedia = [
     rating: 8.6,
     status: "Completed",
     runtime: "2h 05m",
-    image:
-      "https://image.tmdb.org/t/p/w600_and_h900_bestv2/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg",
   },
   {
     id: 11,
@@ -148,8 +128,6 @@ export const initialMedia = [
     rating: 7.4,
     status: "Completed",
     runtime: "1h 49m",
-    image:
-      "https://image.tmdb.org/t/p/w600_and_h900_bestv2/sh7Rg8Er3tFcN9BpKIPOMvALgZd.jpg",
   },
   {
     id: 12,
@@ -160,8 +138,6 @@ export const initialMedia = [
     rating: 7.3,
     status: "Plan to Watch",
     runtime: "1h 59m",
-    image:
-      "https://image.tmdb.org/t/p/w600_and_h900_bestv2/b33nnKl1GSFbao8l3KiM69fZdrS.jpg",
   },
   {
     id: 13,
@@ -172,8 +148,6 @@ export const initialMedia = [
     rating: 7.2,
     status: "Plan to Watch",
     runtime: "2h 28m",
-    image:
-      "https://image.tmdb.org/t/p/w600_and_h900_bestv2/2cxhvwyEwRlysAmRH4iodkvo0z5.jpg",
   },
   {
     id: 14,
@@ -188,8 +162,6 @@ export const initialMedia = [
     totalSeasons: 1,
     totalEp: 10,
     runtime: "1h 00m",
-    image:
-      "https://image.tmdb.org/t/p/w600_and_h900_bestv2/7O4iVfOMQmdCSPxRIiqxdu2qI52.jpg",
   },
   {
     id: 15,
@@ -200,8 +172,6 @@ export const initialMedia = [
     rating: 8.9,
     status: "Completed",
     runtime: "2h 49m",
-    image:
-      "https://image.tmdb.org/t/p/w600_and_h900_bestv2/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
   },
   {
     id: 16,
@@ -216,8 +186,6 @@ export const initialMedia = [
     totalSeasons: 1,
     totalEp: 8,
     runtime: "58m",
-    image:
-      "https://image.tmdb.org/t/p/w600_and_h900_bestv2/kWZf9T9yFw21e3C0tY5R84QzM.jpg",
   },
   {
     id: 17,
@@ -228,8 +196,6 @@ export const initialMedia = [
     rating: 8.1,
     status: "Completed",
     runtime: "2h 56m",
-    image:
-      "https://image.tmdb.org/t/p/w600_and_h900_bestv2/74xTEgt7R36Fpooo50r9T25onhq.jpg",
   },
   {
     id: 18,
@@ -244,57 +210,48 @@ export const initialMedia = [
     totalSeasons: 4,
     totalEp: 28,
     runtime: "25m",
-    image:
-      "https://image.tmdb.org/t/p/w600_and_h900_bestv2/hTP1DtLGFamjfu8WqjnuQdP1n4i.jpg",
   },
 ];
 
-export const POSTER_FALLBACKS = Object.fromEntries(
-  initialMedia.map((item) => [item.title, item.image]),
-);
-
-export const DEFAULT_POSTER =
-  "https://image.tmdb.org/t/p/w600_and_h900_bestv2/74xTEgt7R36Fpooo50r9T25onhq.jpg";
-
-export const JUMP_BACK_IN_CAROUSEL = [
+export const JUMP_BACK_IN_ITEMS = [
   {
     id: 4,
     title: "Stranger Things",
     platform: "Netflix",
     rating: "8.9",
+    year: "2022",
+    genre: "Thriller",
     episodeBadge: "S4:E7 / 9",
     percent: 78,
-    banner:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBqole14TvGG_qjRX2LXgT5h9jjIz53p5xOnuIEXNqXXzqrkctwuBtc1Gfbao3GKNWZU1AR1SNsR73yreBkzdeEfST4ucwpm-U09HVkyYC2w_Jz082_4tItwLrYAJp0eUOackvurx4LmDI-jzP1lqHBpGAVyi_D2UU7zk0P4jd4AQT6LFqqK-dXEXXHnmkjvphpVlfKNOqyr1vwvcd3_pVKAK70eJ2Ugh2WV2sBqmA",
   },
   {
     id: 5,
     title: "Jujutsu Kaisen",
     platform: "Crunchyroll",
     rating: "9.1",
+    year: "2023",
+    genre: "Anime",
     episodeBadge: "S2:E16 / 23",
     percent: 70,
-    banner:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDlt6WEYN4SI6NBxJFaZZIUw4yL5G39jO0aigCc4O3GmPc6Fxnz-R5CUGhoubndTH5M5Q_Gjs3cmVVCOVq3WQGu6ZK3hakkQ49hLxog1y-i0z-fcR4nMcchZUHxIFdfvp5LtWsKSsyPZ4T4zCfkQxX8o1_yGwO6Mx9ukh9x-Rxq5FQLXVqXdr8HaiATZeiSxCjaeRvjAYC5-feX7bIzCVH1UOPUdDN8TyHiOLBGGdc",
   },
   {
     id: 6,
     title: "The Bear",
     platform: "Hulu",
     rating: "8.8",
+    year: "2024",
+    genre: "Drama",
     episodeBadge: "S3:E4 / 10",
     percent: 40,
-    banner:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAo9KlCBVO6KEHUYxcJo5HFeA3lQO9WVfnb_C0dff5ij5klEBf6oDFQdJy5MYn_deKPwo7ZRol_lnPpncCcMfjd9kNA7LM0-WaRPu44FcG9OjPbMilcjVaxbM0O0yeUPXJBWFmxpQPcLYNpHd4Inhik6oU6y20C6vV4OvxuBwKZNzpP8C9T8hh1Q_05vWjviW_2rsat8ER1hyEMGp59HwonASXXuO2zs3UDik74ajk",
   },
   {
     id: 7,
     title: "Severance",
     platform: "Apple TV+",
     rating: "9.0",
+    year: "2022",
+    genre: "Thriller",
     episodeBadge: "S1:E8 / 9",
     percent: 88,
-    banner:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuD0g6FFyoN3YtDFQRi92Rz_aKt5biTuJ_p4P4B810Kccqf6xrVc-u2vLfSiKfJShUYgqx_KADud5N2dabLSf-QcuNcxd49hMoPlhOwCZK6aO_le0YgNQjL0DzopjxSDHREVmpbeqc89neL1xQUJ6bRHNEZrMXciHQY1t4sjINkN_4axVda4edoFdQpNxj_aSEISTp_U1n_QrA4efIfsAw1q-k4E8q1CLJI1lFiIzMQ",
   },
 ];

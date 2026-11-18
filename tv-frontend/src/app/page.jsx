@@ -50,7 +50,7 @@ export default function HomePage() {
         onSearchChange={setSearchQuery}
       />
 
-      <main className="w-full pt-16 bg-surface min-h-[calc(100vh-140px)]">
+      <main className="w-full pt-16 bg-[#111111] min-h-[calc(100vh-140px)]">
         <div className="flex flex-col w-full">
           <HeroSpotlight
             featuredItem={featuredItem}

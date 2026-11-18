@@ -3,13 +3,13 @@ import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "600", "700", "800"],
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 
 export const metadata = {
   title: "CINETRACK - Personal Cinema & TV Tracker",
-  description: "Personal Cinema & TV Library Engine",
+  description: "Personal Cinema & TV Tracker",
 };
 
 export default function RootLayout({ children }) {
@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body
-        className={`${inter.className} bg-background text-on-surface font-body-md text-body-md antialiased min-h-screen selection:bg-primary-container selection:text-on-primary-container`}
+        className={`${inter.className} bg-[#111111] text-on-surface font-body-md text-body-md antialiased min-h-screen selection:bg-primary-container selection:text-on-primary-container`}
       >
         {children}
       </body>

@@ -15,7 +15,7 @@ export default function Pagination({
   const nextDisabled = currentPage === totalPages;
 
   return (
-    <div className="mt-8 pt-4 border-t border-surface-container-high flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div className="mt-8 pt-4 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4">
       <div className="text-tertiary font-body-sm text-body-sm">
         Showing{" "}
         <span className="text-white font-semibold">
@@ -30,8 +30,8 @@ export default function Pagination({
           onClick={() => !prevDisabled && onPageChange(currentPage - 1)}
           className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-title-md font-body-sm transition-all ${
             prevDisabled
-              ? "text-tertiary/40 cursor-not-allowed bg-surface-container-low"
-              : "bg-surface-container-high hover:bg-surface-bright text-white cursor-pointer"
+              ? "text-tertiary/40 cursor-not-allowed bg-surface-container-low border border-white/5"
+              : "bg-[#181818] border border-white/10 hover:bg-surface-bright text-white cursor-pointer"
           }`}
           type="button"
         >
@@ -50,7 +50,7 @@ export default function Pagination({
               className={`w-8 h-8 rounded-lg font-title-md text-body-sm flex items-center justify-center transition-all ${
                 isActive
                   ? "bg-primary-container text-white font-bold shadow-[0_0_12px_rgba(229,9,20,0.45)] ring-1 ring-white/20"
-                  : "bg-surface-container-high hover:bg-surface-bright text-tertiary hover:text-white"
+                  : "bg-[#181818] border border-white/5 hover:bg-surface-bright text-tertiary hover:text-white"
               }`}
               type="button"
             >
@@ -64,8 +64,8 @@ export default function Pagination({
           onClick={() => !nextDisabled && onPageChange(currentPage + 1)}
           className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-title-md font-body-sm transition-all ${
             nextDisabled
-              ? "text-tertiary/40 cursor-not-allowed bg-surface-container-low"
-              : "bg-surface-container-high hover:bg-surface-bright text-white cursor-pointer"
+              ? "text-tertiary/40 cursor-not-allowed bg-surface-container-low border border-white/5"
+              : "bg-[#181818] border border-white/10 hover:bg-surface-bright text-white cursor-pointer"
           }`}
           type="button"
         >

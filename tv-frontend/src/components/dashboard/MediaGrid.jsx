@@ -21,17 +21,17 @@ export default function MediaGrid({
     <section className="w-full px-margin md:px-margin-desktop py-space-sm">
       {totalFilteredCount === 0 ? (
         <div className="w-full py-space-xl text-center space-y-space-sm">
-          <div className="w-16 h-16 mx-auto rounded-full bg-surface-container-high flex items-center justify-center text-tertiary">
+          <div className="w-16 h-16 mx-auto rounded-full bg-white/5 flex items-center justify-center text-tertiary">
             <span className="material-symbols-outlined text-[32px]">
               videocam_off
             </span>
           </div>
-          <h3 className="font-headline-sm text-headline-sm text-white">
+          <h3 className="font-headline-sm text-headline-sm text-white font-bold">
             No titles found
           </h3>
           <p className="text-tertiary font-body-sm text-body-sm max-w-sm mx-auto">
             Try clearing your search query or switching category filters to view
-            your tracked cinema library.
+            your tracked library.
           </p>
           <button
             onClick={onResetFilters}
@@ -43,7 +43,7 @@ export default function MediaGrid({
         </div>
       ) : (
         <>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 min-h-[420px]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 min-h-[220px]">
             {pageItems.map((item) => (
               <MediaCard
                 key={item.id}

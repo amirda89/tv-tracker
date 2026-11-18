@@ -24,7 +24,7 @@ export default function FilterBar({
   return (
     <section
       id="library"
-      className="sticky top-16 z-30 w-full bg-surface/90 backdrop-blur-xl shadow-md py-space-sm px-margin md:px-margin-desktop my-space-md"
+      className="sticky top-16 z-30 w-full bg-[#111111]/95 backdrop-blur-xl border-y border-white/[0.06] py-3 px-margin md:px-margin-desktop my-space-md"
     >
       <div className="flex flex-col xl:flex-row items-stretch xl:items-center justify-between gap-space-sm">
         {/* Category Filter Pills */}
@@ -55,7 +55,7 @@ export default function FilterBar({
               search
             </span>
             <input
-              className="w-full sm:w-56 pl-9 pr-8 py-1.5 rounded-lg bg-surface-container text-white placeholder:text-tertiary font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary-container transition-all"
+              className="w-full sm:w-56 pl-9 pr-8 py-1.5 rounded-lg bg-surface-container border border-white/5 text-white placeholder:text-tertiary font-body-sm text-body-sm focus:outline-none focus:border-primary-container transition-all"
               placeholder="Filter title, actor, year..."
               type="text"
               value={searchQuery}
@@ -75,7 +75,7 @@ export default function FilterBar({
           </div>
 
           <select
-            className="bg-surface-container text-tertiary hover:text-white px-3 py-1.5 rounded-lg font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary-container transition-all"
+            className="bg-surface-container border border-white/5 text-tertiary hover:text-white px-3 py-1.5 rounded-lg font-body-sm text-body-sm focus:outline-none focus:border-primary-container transition-all"
             value={selectedGenre}
             onChange={(e) => onGenreChange(e.target.value)}
           >
@@ -89,7 +89,7 @@ export default function FilterBar({
           </select>
 
           <select
-            className="bg-surface-container text-tertiary hover:text-white px-3 py-1.5 rounded-lg font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary-container transition-all"
+            className="bg-surface-container border border-white/5 text-tertiary hover:text-white px-3 py-1.5 rounded-lg font-body-sm text-body-sm focus:outline-none focus:border-primary-container transition-all"
             value={selectedSort}
             onChange={(e) => onSortChange(e.target.value)}
           >

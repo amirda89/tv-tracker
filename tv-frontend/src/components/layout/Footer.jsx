@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-surface-container-lowest py-space-xl">
+    <footer className="w-full bg-[#0e0e0e] border-t border-white/[0.06] py-space-xl">
       <div className="w-full px-margin md:px-margin-desktop flex flex-col md:flex-row items-center justify-between gap-space-lg">
         <div className="flex items-center gap-space-xs">
           <div className="w-6 h-6 rounded bg-primary-container flex items-center justify-center">
@@ -14,10 +14,9 @@ export default function Footer() {
             CINETRACK
           </span>
           <span className="text-tertiary font-body-sm text-body-sm pl-space-sm">
-            © 2025 CineTrack Platform. Personal Library Engine.
+            © 2025 CineTrack Platform. Personal Cinema Tracker.
           </span>
         </div>
-
         <div className="flex items-center gap-space-lg text-tertiary font-body-sm text-body-sm">
           <Link className="hover:text-on-surface transition-colors" href="#">
             Changelog

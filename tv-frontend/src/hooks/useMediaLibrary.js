@@ -1,58 +1,45 @@
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
-import {
-  initialMedia,
-  POSTER_FALLBACKS,
-  DEFAULT_POSTER,
-} from "@/data/initialMedia";
+import { initialMedia } from "@/data/initialMedia";
 
-const STORAGE_KEY = "cinetrack_library_data_v3";
+const STORAGE_KEY = "cinetrack_library_data_minimal_v1";
 const ITEMS_PER_PAGE = 5;
 
 export function useMediaLibrary() {
   const [library, setLibrary] = useState(initialMedia);
   const [isHydrated, setIsHydrated] = useState(false);
 
-  // Filter & Pagination States
   const [currentFilter, setCurrentFilter] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedGenre, setSelectedGenre] = useState("all");
   const [selectedSort, setSelectedSort] = useState("updated");
   const [currentPage, setCurrentPage] = useState(1);
 
-  // Modal States
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
 
-  // Hydrate from localStorage on client mount
   useEffect(() => {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
-        const parsed = JSON.parse(stored).map((item) => ({
-          ...item,
-          image: POSTER_FALLBACKS[item.title] || item.image,
-        }));
-        setLibrary(parsed);
+        setLibrary(JSON.parse(stored));
       }
     } catch {
-      // Fallback to initialMedia
+      // Fallback
     }
     setIsHydrated(true);
   }, []);
 
-  // Persist changes
   useEffect(() => {
     if (!isHydrated) return;
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(library));
     } catch {
-      // Ignore storage quota errors
+      // Ignore quota errors
     }
   }, [library, isHydrated]);
 
-  // Dashboard Metrics
   const metrics = useMemo(() => {
     const total = library.length;
     const movies = library.filter((x) => x.type === "Movie").length;
@@ -65,7 +52,6 @@ export function useMediaLibrary() {
     return { total, movies, series, watching, completed, watchlist };
   }, [library]);
 
-  // Filtered & Sorted Items
   const filteredItems = useMemo(() => {
     let items = [...library];
 
@@ -103,7 +89,6 @@ export function useMediaLibrary() {
     return items;
   }, [library, currentFilter, selectedGenre, searchQuery, selectedSort]);
 
-  // Pagination Calculations
   const totalPages = Math.max(
     1,
     Math.ceil(filteredItems.length / ITEMS_PER_PAGE),
@@ -115,15 +100,13 @@ export function useMediaLibrary() {
     startIndex + ITEMS_PER_PAGE,
   );
 
-  // Featured Spotlight Item (Arcane)
   const featuredItem = useMemo(
     () =>
       library.find((x) => x.title.toLowerCase().includes("arcane")) ||
-      library[0],
+      library[1],
     [library],
   );
 
-  // Actions
   const quickIncrement = (id) => {
     setLibrary((prev) =>
       prev.map((item) => {
@@ -176,23 +159,14 @@ export function useMediaLibrary() {
   };
 
   const saveMediaItem = (formData) => {
-    const fallback = POSTER_FALLBACKS[formData.title] || DEFAULT_POSTER;
-    const image = formData.image?.startsWith("http")
-      ? formData.image
-      : fallback;
-
     if (formData.id) {
       setLibrary((prev) =>
         prev.map((item) =>
-          item.id === formData.id ? { ...item, ...formData, image } : item,
+          item.id === formData.id ? { ...item, ...formData } : item,
         ),
       );
     } else {
-      const newItem = {
-        ...formData,
-        id: Date.now(),
-        image,
-      };
+      const newItem = { ...formData, id: Date.now() };
       setLibrary((prev) => [newItem, ...prev]);
     }
     setCurrentPage(1);
