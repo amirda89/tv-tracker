@@ -10,8 +10,6 @@ const port = 3001;
 app.use(cors());
 app.use(express.json());
 
-// Цувралын анги, улирал болон төлөвийг автоматаар тооцоолох туслах функц
-// main.js доторх calculateSeriesState функцийг доорх байдлаар сайжруулна
 function calculateSeriesState({ cur_season, cur_ep, total_seasons, total_ep }) {
   const maxSeasons = Math.max(1, Number(total_seasons) || 1);
   const maxEp = Math.max(1, Number(total_ep) || 10);

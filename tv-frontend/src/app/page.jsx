@@ -55,11 +55,7 @@ export default function HomePage() {
 
   return (
     <>
-      <Header
-        onOpenModal={openAddModal}
-        searchQuery={searchQuery}
-        onSearchChange={setSearchQuery}
-      />
+      <Header />
 
       <main className="w-full pt-16 bg-[#111111] min-h-[calc(100vh-140px)]">
         <div className="flex flex-col w-full">
