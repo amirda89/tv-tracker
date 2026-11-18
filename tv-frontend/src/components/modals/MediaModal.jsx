@@ -45,7 +45,27 @@ export default function MediaModal({ isOpen, editingItem, onClose, onSave }) {
 
   if (!isOpen) return null;
 
-  // Хэрэглэгчид одоогийн оруулсан тооноос хамаарч ямар төлөв рүү шилжихийг урьдчилж харуулах
+  // Одоогийн улирал болон ангийг нийт хязгаар дотор барих validation функц
+  const handleSeasonChange = (val) => {
+    const num = Number(val);
+    const maxS = Number(totalSeasons) || 1;
+    if (num > maxS) {
+      setCurSeason(maxS); // Нийт улирлаас илүү гаргахгүй
+    } else {
+      setCurSeason(Math.max(1, num));
+    }
+  };
+
+  const handleEpChange = (val) => {
+    const num = Number(val);
+    const maxE = Number(totalEp) || 10;
+    if (num > maxE) {
+      setCurEp(maxE); // Нийт ангиас илүү гаргахгүй
+    } else {
+      setCurEp(Math.max(0, num));
+    }
+  };
+
   const getComputedSeriesStatus = () => {
     const s = Number(curSeason) || 1;
     const e = Number(curEp) || 0;
@@ -136,7 +156,6 @@ export default function MediaModal({ isOpen, editingItem, onClose, onSave }) {
               </select>
             </div>
 
-            {/* Зөвхөн Movie үед Status-ийг гараар сонгуулна */}
             {type === "Movie" && (
               <div>
                 <label className="block text-xs text-zinc-400 uppercase tracking-wider mb-1">
@@ -155,7 +174,6 @@ export default function MediaModal({ isOpen, editingItem, onClose, onSave }) {
             )}
           </div>
 
-          {/* Series үед анги/улирлын тоо болон автомат төлөвийг харуулна */}
           {type === "Series" && (
             <div className="p-3 rounded-lg bg-[#111111] border border-white/5 space-y-3">
               <div className="flex items-center justify-between">
@@ -172,25 +190,27 @@ export default function MediaModal({ isOpen, editingItem, onClose, onSave }) {
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                 <div>
                   <label className="text-[10px] text-zinc-400">
-                    Cur Season
+                    Cur Season (Max: {totalSeasons})
                   </label>
                   <input
                     type="number"
                     min="1"
+                    max={totalSeasons}
                     value={curSeason}
-                    onChange={(e) => setCurSeason(e.target.value)}
+                    onChange={(e) => handleSeasonChange(e.target.value)}
                     className="w-full px-2 py-1 rounded bg-[#222] border border-white/5 text-white text-center text-sm"
                   />
                 </div>
                 <div>
                   <label className="text-[10px] text-zinc-400">
-                    Cur Episode
+                    Cur Episode (Max: {totalEp})
                   </label>
                   <input
                     type="number"
                     min="0"
+                    max={totalEp}
                     value={curEp}
-                    onChange={(e) => setCurEp(e.target.value)}
+                    onChange={(e) => handleEpChange(e.target.value)}
                     className="w-full px-2 py-1 rounded bg-[#222] border border-white/5 text-white text-center text-sm"
                   />
                 </div>
@@ -284,6 +304,7 @@ export default function MediaModal({ isOpen, editingItem, onClose, onSave }) {
           <div className="pt-3 flex justify-end gap-2">
             <button
               type="button"
+              onChange={onClose}
               onClick={onClose}
               className="px-4 py-2 rounded-lg bg-zinc-800 text-zinc-300 hover:text-white text-xs uppercase"
             >

@@ -11,16 +11,18 @@ app.use(cors());
 app.use(express.json());
 
 // Цувралын анги, улирал болон төлөвийг автоматаар тооцоолох туслах функц
+// main.js доторх calculateSeriesState функцийг доорх байдлаар сайжруулна
 function calculateSeriesState({ cur_season, cur_ep, total_seasons, total_ep }) {
-  let season = Math.max(1, Number(cur_season) || 1);
-  let ep = Math.max(0, Number(cur_ep) || 0);
   const maxSeasons = Math.max(1, Number(total_seasons) || 1);
   const maxEp = Math.max(1, Number(total_ep) || 10);
+
+  // Хэрэглэгчийн оруулсан current season / episode нь total-оос хэтэрсэн байвал автоматаар max утгаар хязгаарлана
+  let season = Math.min(maxSeasons, Math.max(1, Number(cur_season) || 1));
+  let ep = Math.min(maxEp, Math.max(0, Number(cur_ep) || 0));
 
   // Хэрэв тухайн улирлын сүүлийн ангид хүрсэн эсвэл давсан бол
   if (ep >= maxEp) {
     if (season < maxSeasons) {
-      // Дараагийн улирал байгаа тул шилжүүлнэ (1-р ангиас эхэлнэ)
       season += 1;
       ep = 1;
       return {
@@ -31,7 +33,6 @@ function calculateSeriesState({ cur_season, cur_ep, total_seasons, total_ep }) {
         status: "Watching",
       };
     } else {
-      // Бүх улирал, бүх анги дууссан
       return {
         cur_season: maxSeasons,
         cur_ep: maxEp,
@@ -42,7 +43,6 @@ function calculateSeriesState({ cur_season, cur_ep, total_seasons, total_ep }) {
     }
   }
 
-  // 1-р улирлын 0-р анги дээр байвал огт эхлээгүй гэж үзнэ
   if (season === 1 && ep === 0) {
     return {
       cur_season: 1,
@@ -53,7 +53,6 @@ function calculateSeriesState({ cur_season, cur_ep, total_seasons, total_ep }) {
     };
   }
 
-  // 1-ээс дээш анги үзсэн боловч дуусаагүй байгаа үед
   return {
     cur_season: season,
     cur_ep: ep,
